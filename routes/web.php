@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+
+
+Route::get('/', 'storyController@liste')->name('stories');
+Route::get('story/{rootstory}', 'storyController@detay')->name('storydetay');
+
