@@ -10,4 +10,8 @@ class secondalter extends Model
     {
         return $this->belongsTo('App\firstalter','parentid','id');
     }
+    public function user()
+    {
+        return $this->belongsTo('App\User','kullanici_id','id');
+    }
 }

@@ -6,20 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class firstalter extends Model
 {
-    public function asd()
+    public function secondalters()
     {
         return $this->hasMany('App\secondalter','parentid','id');
     }
-
-    public function fillSecondAlters()
-    {
-        $this->devambir = secondalter::find($this->devambir);
-        $this->devamiki = secondalter::find($this->devamiki);
-        $this->devamuc = secondalter::find($this->devamuc);
-
-    }
-    public function parentrootStory()
+    public function parentStory()
     {
         return $this->belongsTo('App\rootstory','parentid','id');
+    }
+    public function user()
+    {
+        return $this->belongsTo('App\User','kullanici_id','id');
     }
 }

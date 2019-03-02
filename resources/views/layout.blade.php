@@ -21,13 +21,64 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.0/js/mdb.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.all.js"></script>
-  </head>
+    <link rel="stylesheet" type="text/css" href="{{ url('/css/style.css') }}" />
+
+    </head>
 
   <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+      <div class="container">
+        <a class="navbar-brand" href="/1">alterstory</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+              <?php if (session()->has('user')): ?>
+              <li class="nav-item">
+              <a class="nav-link" href="{{route('profil',session('user.ad'))}}">{{session('user.ad')}}</a>
+              </li>
+              <?php endif; ?>
+            <li class="nav-item">
+              <?php if (session()->has('user') and session('user.ban')==0): ?>
+                <a class="nav-link" href="/createrootstory">
+                  Hikaye Yaz <i class="fas fa-pen"></i>
+                </a>
+                <?php elseif(session()->has('user') and session('user.ban')==1): ?> 
+                <a class="nav-link" onclick="ban()">
+                  Hikaye Yaz <i class="fas fa-pen"></i>
+                </a>
+              <?php else: ?>
+                <a class="nav-link" onclick="noUser()">
+                  Hikaye Yaz <i class="fas fa-pen"></i>
+                </a>
+              <?php endif; ?>
+            </li>
+            <?php if (session()->has('user')): ?>
+              <li class="nav-item">
+                <a class="nav-link" href="{{route('logoutuser')}}">
+                  Çıkış Yap <i class="fas fa-sign-out-alt"></i>
+                </a></li>
+              <?php endif; ?>
+              <?php if (!session()->has('user')): ?>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{route('login')}}">
+                    Giriş Yap/Kayıt Ol
+                  </a>
+                </li>
+              <?php endif; ?>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
 
       <div class="container">
           @yield('content');
       </div>
+
+
 
       
 
