@@ -16,7 +16,7 @@
                    <input id="ksifre" type="password" name="kullanici_sifre" class="form-control" placeholder="Şifre" required="required">
                </div>
                <div class="form-group">
-                   <button  id="giris" type="submit" class="btn btn-primary btn-block">Giriş Yap</button>
+                   <button onclick="sorgu2()" id="giris" type="submit" class="btn btn-primary btn-block">Giriş Yap</button>
                    <a  id="giris" href="{{route('signin')}}" class="btn btn-primary btn-block">Kayıt Ol</a>
                </div>
            </form>

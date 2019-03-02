@@ -14,12 +14,16 @@
                <a  href="alterstories/<?php echo $firstalter->parentStory->id ?>/<?php echo $firstalter->parentStory->seviye?>" class=" btn-link  btn-sm">Hikayeye git <i class="fas fa-book-open"></i></a>
               </p>
               <p class="card-text"><?php echo $firstalter->metin ?> <br> <a href="profil/<?php echo $firstalter->user->ad  ?>"><?php echo $firstalter->user->ad ?></a>(<?php echo $firstalter->created_at->diffForHumans() ?>)</p>
+              @if (session()->has('user') and $firstalter->izin()==1 )
+               
                         <form class="" action="{{ route('addalter', $firstalter->id)}}" method="post">
                             {{ csrf_field() }}
                         <input type="hidden" name="parentid" value="<?php echo $firstalter->id ?>">
                         <input type="hidden" name="seviye" value="<?php echo $firstalter->seviye ?>">
                         <button class="btn btn-primary btn-sm"type="submit">devam ettir &rarr;</button>
                         </form>
+                           
+              @endif
             </div>
       </div>
     </div>

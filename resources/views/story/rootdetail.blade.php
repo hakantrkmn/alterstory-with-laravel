@@ -1,19 +1,26 @@
 @extends('layout')
 
 @section('content')
-
+<div class="container sd">
     <div class="row">
       <div  class="col-md-12">
-        <h1 class="my-4">Alternatif Devamlar {{ session()->get('user.ad')}}</h1>
+        <h1 class="my-4">Alternatif Devamlar</h1>
+        @if($errors->any())
+          <div class="alert alert-danger text-center" role="alert"> 
+              {{$errors->first()}}
+        </div>
+          @endif
           <div class="card mb-4">
             <div class="card-body">
               <h2 align="center"class="card-title"> {{ $rootstory->baslik }} </h2>
               <p class="card-text"><?php echo $rootstory->metin ?><br> <a href="{{route('profil', $rootstory->user->ad)}}">{{ $rootstory->user->ad }}</a>({{ $rootstory->created_at->diffForHumans() }})</p>
-                      <form class="" action="{{ route('addalter', $rootstory->id)}}" method="post">
-                          {{ csrf_field() }}
-                          <input type="hidden" name="seviye" value=" {{ $rootstory->seviye}} ">
-                          <button class="btn btn-primary btn-sm"type="submit">devam ettir &rarr;</button>
+              @if (session()->has('user') and $rootstory->izin()==1)   
+              <form class="" action="{{ route('addalter', $rootstory->id)}}" method="post">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="seviye" value=" {{ $rootstory->seviye}} ">
+                    <button class="btn btn-primary btn-sm"type="submit">devam ettir &rarr;</button>
                 </form>
+                @endif   
             </div>
           </div>
         </div>
@@ -37,5 +44,5 @@
       }, 5000);
   </script>
   
-
+</div>
 @endsection

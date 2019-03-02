@@ -22,7 +22,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.0/js/mdb.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.all.js"></script>
     <link rel="stylesheet" type="text/css" href="{{ url('/css/style.css') }}" />
-
+<script src="{{ url('/js/alter.js') }}"></script>
     </head>
 
   <body>
