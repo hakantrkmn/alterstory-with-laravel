@@ -23,6 +23,11 @@ Route::post('loginUser', 'userController@loginUser')->name('loginUser');  //kull
 
 Route::get('logoutuser', 'userController@logoutuser')->name('logoutuser'); //kullanıcı çıkış yapma
 
+
+Route::post('apilogin', 'myAPI@apilogin')->name('apilogin'); //kullanıcı çıkış yapma
+Route::post('apisignin', 'myAPI@apisignin')->name('apisignin'); //kullanıcı çıkış yapma
+
+
 Route::post('signinUser', 'userController@signinUser')->name('signinUser'); //kullanıcı kayıt etme
 Route::post('addRootStory', 'storyController@addRootStory')->name('addRootStory'); //anahikaye kayıt etme
 Route::post('savealter', 'storyController@savealter')->name('savealter'); //alternatif kayıt etme
@@ -35,6 +40,7 @@ Route::get('profil/{name}', 'userController@userdetail')->name('profil');
 
 
 
+Route::get('', 'storyController@liste')->name('stories');
 
 Route::get('{page}', 'storyController@liste')->name('stories');
 

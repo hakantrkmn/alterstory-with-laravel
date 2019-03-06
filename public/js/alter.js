@@ -124,7 +124,11 @@ function karakter(){
 	}
 
 function sorgu(){
-
+	$.ajaxSetup({
+		headers: {
+			 'X-CSRF-TOKEN': $('input[name="_token"]').val()
+			 }
+	 })
 		 var kullanici_adi = $("#kadi").val();
 		 var kullanici_mail = $("#kmail").val();
 		 var kullanici_sifre = $("#ksifre").val();
@@ -135,12 +139,11 @@ function sorgu(){
 
 		      $.ajax({
 		        type:'POST',
-						url:'api.php',
+						url:'apisignin',
 						dataType: "json",
-		        data:{kullanici_adi:kullanici_adi,kullanici_mail:kullanici_mail,insert:0},
+		        data:{ad:kullanici_adi,mail:kullanici_mail,insert:0},
 		        success:function(data){
-							console.log(data)
-		          if (data.hatali == '1')
+		          if (data == '1')
 		          {
 		            $("#asd").fadeIn("slow");
 								setTimeout(function(){
@@ -153,12 +156,14 @@ function sorgu(){
 		            $('#basari').fadeIn();
 										setTimeout(function(){
 											$('#myform').submit();
-
 										},1000)
 								
 
 		          }
-		        }
+		        },error: function (xhr, ajaxOptions, thrownError) {
+							alert(xhr.status);
+							alert(thrownError);
+						}
 		      });
 
 
@@ -179,22 +184,28 @@ function sorgu(){
 		}
 
 function sorgu2(){
-
-
+	$.ajaxSetup({
+		headers: {
+			 'X-CSRF-TOKEN': $('input[name="_token"]').val()
+			 }
+	 })
+	
 	var kadi = $("#kadi").val();
 	var ksifre = $("#ksifre").val();
+
 	event.preventDefault();
 	if (document.getElementById('myform').checkValidity()==true) {
+
 			$.ajax({
 				type:'POST',
-				url:"myAPI.php",
-				dataType: "json",
+				url:"apilogin",
+				dataType: "json",	
 				data:{kadi:kadi,ksifre:ksifre,login:1},
 				success:function(giris){
 					console.log(giris)
-					if (giris.durum == "1")
+					if (giris["durum"] == "1")
 					{
-						window.location = '/alterstory/'
+						window.location = '/'
 					}
 					else{
 						$("#asd").fadeIn("slow");

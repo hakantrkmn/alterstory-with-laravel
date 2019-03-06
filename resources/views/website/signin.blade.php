@@ -31,7 +31,7 @@
                  </div>
                </div>
                <div class="form-group">
-                   <button id="signin" type="submit" class="btn btn-primary btn-block">Kayıt ol</button>
+                   <button onclick="sorgu()" id="signin" type="submit" class="btn btn-primary btn-block">Kayıt ol</button>
                </div>
            </form>
        </div>

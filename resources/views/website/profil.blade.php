@@ -1,10 +1,32 @@
 @extends('layout')
-
 @section('content')
 
+<div class="container deneme">
+<div class="row align-items-start">
+    <div class="col-lg-3 col-sm-6">
 
-  <div class="row">
-      <div class="col-md-12">
+        <div class="card hovercard">
+            <div class="cardheader">
+
+            </div>
+            <div class="avatar">
+                <img alt="" src="https://scontent.fbtz1-3.fna.fbcdn.net/v/t1.0-9/14102416_10209123261632885_5785918647281898408_n.jpg?_nc_cat=109&_nc_ht=scontent.fbtz1-3.fna&oh=24cd59aaaf05f7bf3e4ef2bd4ad63485&oe=5CE18AE6">
+            </div>
+            <div class="info">
+                <div class="title">
+                <a target="_blank" href="https://scripteden.com/">{{$user->ad}}</a>
+                </div>
+                <div class="desc">Passionate designer</div>
+                <div class="desc">Curious developer</div>
+                <div class="desc">Tech geek</div>
+            </div>
+            
+        </div>
+
+    </div>
+
+
+      <div class="col-md-9">
         <h1 class="my-4 baslik">Başlattığı Hikayeler</h1>
   <?php foreach ($user->rootstories as  $value): ?>
     <div class="card mb-4">
@@ -61,5 +83,8 @@
   <?php endforeach; ?>
       </div>
     </div>
+  </div>
+  <script>
+  </script>
     @endsection
   

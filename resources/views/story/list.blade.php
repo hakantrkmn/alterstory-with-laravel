@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-
+<div class="container">
 <div class="row">
         <div class="col-md-12">
         <h1 class="my-4 ">Hikayeler </h1>
@@ -22,7 +22,7 @@
             </li>
         @endfor
       </ul>
-
+    </div>
 @endsection
 
 
