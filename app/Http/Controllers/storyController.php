@@ -7,6 +7,7 @@ use App\rootstory;
 use App\secondalter;
 use App\firstalter;
 
+
 class storyController extends Controller
 {
     public function liste($page = 1)

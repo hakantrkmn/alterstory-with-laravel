@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-
+<div class="container sd">
     <div class="row">
       <div  class="col-md-12">
         <h1 class="my-4">Alternatif Devamlar</h1>
@@ -11,11 +11,11 @@
               <p class="card-text"><?php echo $firstalter->parentStory->metin ?><br>
                <a href="profil/<?php echo $firstalter->parentStory->user->ad  ?>"><?php echo $firstalter->parentStory->user->ad ?></a>
                (<?php echo $firstalter->parentStory->created_at->diffForHumans() ?>)
-               <a  href="alterstories/<?php echo $firstalter->parentStory->id ?>/<?php echo $firstalter->parentStory->seviye?>" class=" btn-link  btn-sm">Hikayeye git <i class="fas fa-book-open"></i></a>
+              <a  href="{{route('storydetay',$firstalter->parentStory)}}" class=" btn-link  btn-sm">Hikayeye git <i class="fas fa-book-open"></i></a>
               </p>
               <p class="card-text"><?php echo $firstalter->metin ?> <br> <a href="profil/<?php echo $firstalter->user->ad  ?>"><?php echo $firstalter->user->ad ?></a>(<?php echo $firstalter->created_at->diffForHumans() ?>)</p>
-              @if (session()->has('user') and $firstalter->izin()==1 )
-               
+              @if (session()->has('user') and $firstalter->izin()==1)
+              
                         <form class="" action="{{ route('addalter', $firstalter->id)}}" method="post">
                             {{ csrf_field() }}
                         <input type="hidden" name="parentid" value="<?php echo $firstalter->id ?>">
@@ -38,12 +38,13 @@
                 </a>
                 (<?php echo $story->created_at->diffForHumans() ?>)
                 </p>
-                <a href="readstory/<?php echo $story->id ?>/<?php echo $story->seviye ?>/<?php echo $story->parentid ?>" class="btn btn-primary btn-sm">Hikayeyi Oku&rarr;</a>
+              <a href="{{route('allstory',$story)}}" class="btn btn-primary btn-sm">Hikayeyi Oku&rarr;</a>
               </div>
             </div>
           </div>
           @endforeach
-        <?php /* if ($firstalter->devamsayisi==0): ?>
+        @if (count($firstalter->secondalters)==0)
+
           <div id="uyari" class="col-md-12">
             <div class="card">
                 <div class="card-body text-center">
@@ -51,7 +52,8 @@
                  </div>
              </div>
           </div>
-        <?php  endif;*/ ?>
+            
+          @endif
         </div>
     </div>
 
@@ -60,7 +62,7 @@
           $("#uyari").fadeOut();
       }, 5000);
   </script>
-
+</div>
   @endsection
 
   

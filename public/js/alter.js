@@ -5,35 +5,35 @@
 
 $(window).bind("load", function() {
 
+
 	setInterval(function(){
 		$.ajax({
 		 type:'POST',
-		 url:'api.php',
-		 dataType: "json",
-		 data:{ban:1},
+		 url:'/apibancheck',
+		 dataType: "text",
+		 data : {_token:$('meta[name="csrf-token"]').attr('content')},
 		 success:function(deneme){
-			 if(deneme.ban==1)
+			 if(deneme==1)
 			 {
-					return 1;
+				return 1
 			 }
-			 console.log("sasa");
-		 }
+		}
 	 });
 
- },300000)
+ },1000)
 
 	
 
 	$('#dogrulama').keyup(function(){
 		if($('#ksifre').val()!=$('#dogrulama').val())
 		{
-			$('#signin').attr("disabled", true);
+			$('#signinButton').attr("disabled", true);
 			$('#warn').fadeIn();
 		}
 		else
 		{
 			$('#warn').fadeOut();
-			$('#signin').attr("disabled", false);
+			$('#signinButton').attr("disabled", false);
 
 
 		}
@@ -42,13 +42,13 @@ $(window).bind("load", function() {
 	$('#ksifre').keyup(function(){
 		if($('#ksifre').val()!=$('#dogrulama').val())
 		{
-			$('#signin').attr("disabled", true);
+			$('#signinButton').attr("disabled", true);
 			$('#warn').fadeIn();
 		}
 		else
 		{
 			$('#warn').fadeOut();
-			$('#signin').attr("disabled", false);
+			$('#signinButton').attr("disabled", false);
 
 
 		}
@@ -140,12 +140,12 @@ function sorgu(){
 		      $.ajax({
 		        type:'POST',
 						url:'apisignin',
-						dataType: "json",
-		        data:{ad:kullanici_adi,mail:kullanici_mail,insert:0},
+						dataType: "text",
+		        data:{ad:kullanici_adi,mail:kullanici_mail},
 		        success:function(data){
 		          if (data == '1')
 		          {
-		            $("#asd").fadeIn("slow");
+								$('#signin').after('<div id="asd" align="center" class="alert alert-danger"><strong>Kullanıcı mevcut</strong></div>');    
 								setTimeout(function(){
 									$("#asd").fadeOut();
 								},2000)
@@ -153,12 +153,11 @@ function sorgu(){
 		          }
 		          else{
 
-		            $('#basari').fadeIn();
+								$('#signin').after('<div id="asd" align="center" class="alert alert-success"><strong>Kayıt Başarılı</strong></div>');    
 										setTimeout(function(){
 											$('#myform').submit();
 										},1000)
 								
-
 		          }
 		        },error: function (xhr, ajaxOptions, thrownError) {
 							alert(xhr.status);
@@ -200,15 +199,14 @@ function sorgu2(){
 				type:'POST',
 				url:"apilogin",
 				dataType: "json",	
-				data:{kadi:kadi,ksifre:ksifre,login:1},
+				data:{kadi:kadi,ksifre:ksifre},
 				success:function(giris){
-					console.log(giris)
 					if (giris["durum"] == "1")
 					{
 						window.location = '/'
 					}
 					else{
-						$("#asd").fadeIn("slow");
+						$('#login').after('<div id="asd" align="center" class="alert alert-danger"><strong>Bilgiler yanlış</strong></div>');    
 						setTimeout(function(){
 							$("#asd").fadeOut();
 						},2000)
@@ -225,6 +223,46 @@ function sorgu2(){
 	}
 		}
 
+		function checkname(){
+			$.ajaxSetup({
+				headers: {
+					 'X-CSRF-TOKEN': $('input[name="_token"]').val()
+					 }
+			 })
+			
+			var kadi = $("#ad").val();		
+			event.preventDefault();
+
+					$.ajax({
+						type:'POST',
+						url:"/apicheckname",
+						dataType: "text",	
+						data:{kadi:kadi},
+						success:function(giris){
+							if (giris== "1")
+							{
+								$('#nickLabel').addClass('text-danger')
+								$('#ad').addClass(' is-invalid ')
+								$('#ad').after('<small id="passwordHelp" class="text-danger">Kullanıcı Mevcut</small>');  
+								setTimeout(() => {
+									$('#passwordHelp').fadeOut()
+								}, 1000);  
+							}
+							else
+							{
+								$('#editform').submit();
+							}
+						},
+						error: function (xhr, ajaxOptions, thrownError) {
+							alert(xhr.status);
+							alert(thrownError);
+						}
+					});
+		
+		
+			}
+				
+		
 
 
 

@@ -1,14 +1,11 @@
 @extends('layout')
 
 @section('content')
-    
+    <div class="container sd">
     <div class="login-form">
            <form id="myform"  method="post">
                 {{ csrf_field() }}
-               <h2 class="text-center">Giriş Yap</h2>
-               <div id="asd"style="display: none" align="center" class="alert alert-danger">
-                       <strong>Bilgiler yanlış</strong>
-               </div>
+               <h2 id="login"class="text-center">Giriş Yap</h2>
                <div class="form-group">
                    <input id="kadi" name="ad" type="text" class="form-control" placeholder="Kullanıcı Adı" required="required">
                </div>
@@ -21,4 +18,5 @@
                </div>
            </form>
        </div>
+    </div>
 @endsection

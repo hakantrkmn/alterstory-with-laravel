@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Create Alternative Stories">
     <meta name="author" content="Hakan Türkmen">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>AlterStory</title>
     <link rel="shortcut icon" href="css/favicon.ico">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
@@ -29,7 +30,7 @@
   <body>
 
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
       <div class="container">
         <a class="navbar-brand" href="/1">alterstory</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,7 +42,7 @@
               <li class="nav-item">
               <a class="nav-link" href="{{route('profil',session('user.ad'))}}">{{session('user.ad')}}</a>
               </li>
-              <?php endif; ?>
+              <?php endif ?>
             <li class="nav-item">
               <?php if (session()->has('user') and session('user.ban')==0): ?>
                 <a class="nav-link" href="/createrootstory">
@@ -55,7 +56,7 @@
                 <a class="nav-link" onclick="noUser()">
                   Hikaye Yaz <i class="fas fa-pen"></i>
                 </a>
-              <?php endif; ?>
+              <?php endif ?>
             </li>
             <?php if (session()->has('user')): ?>
               <li class="nav-item">
@@ -65,41 +66,44 @@
               <?php endif; ?>
               <?php if (!session()->has('user')): ?>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{route('login')}}">
+                  <a class="nav-link" href="{{route('loginuser')}}">
                     Giriş Yap/Kayıt Ol
                   </a>
                 </li>
-              <?php endif; ?>
+              <?php endif ?>
             </ul>
           </div>
         </div>
       </nav>
-@yield('profil');
+@yield('profil')
 
-          @yield('content');
+          @yield('content')
       
 
 
-
       
 
-      <footer class="page-footer font-small unique-color-dark pt-4">
-        <div class="container">
-          <ul class="list-unstyled list-inline text-center py-2">
-            <li class="list-inline-item">
-              <p class="mb-1">İletişim için </p>
-            </li>
-            <li class="list-inline-item">
-    
-              <a href="mailto:hakan_61_601@hotmail.com" class="font-weight-bold"><i class="fas fa-envelope mr-1"></i> Mail</a>
-    
-            </li>
-          </ul>
-        </div>
-        <div class="footer-copyright text-center py-1">© 2018 Copyright:
-          <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
-        </div>
-      </footer>
-    </body>
-    </html>
+          <footer class="page-footer font-small unique-color-dark pt-4">
+            <div class="container">
+              <ul class="list-unstyled list-inline text-center py-2">
+                <li class="list-inline-item">
+                  <p class="mb-1">İletişim için </p>
+                </li>
+                <li class="list-inline-item">
+        
+                  <a href="mailto:support@alterstory.org" class="font-weight-bold"><i class="fas fa-envelope mr-1"></i> Mail</a>
+        
+                </li>
+              </ul>
+            </div>
+            <div class="footer-copyright text-center py-1">
+              <a href="https://www.facebook.com/hknntrkmn" target="_blank" class="fb-ic mr-3" role="button"><i class="fab fa-lg fa-facebook-f"></i></a>
+              <a href="https://twitter.com/hakannturkmenn" target="_blank" class="tw-ic mr-3" role="button"><i class="fab fa-lg fa-twitter"></i></a>
+              <a href="mailto:hakannturkmen@gmail.com" class="gplus-ic mr-3" role="button"><i class="fab fa-lg fa-google-plus-g"></i></a>
+              <a href="https://github.com/hakantrkmn" target="_blank" class="git-ic mr-3" role="button"><i class="fab fa-lg fa-github"></i></a>
+
+            </div>
+          </footer>
+        </body>
+        </html>
 

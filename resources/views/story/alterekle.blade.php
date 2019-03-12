@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-
+<div class="container sd">
        <div class="row">
           <div class="col-md-12">
             <h1 class="my-4">Kendi Alternatif Devamını Yaz</h1>
@@ -37,4 +37,5 @@
           </div>
         </div>
         </div>
+      </div>
         @endsection

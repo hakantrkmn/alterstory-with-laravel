@@ -1,3 +1,4 @@
+body { padding-top: 50px; }
 .login-form {
     width: 340px;
     margin: 50px auto;
@@ -29,10 +30,13 @@ overflow: hidden;
 text-overflow: ellipsis;
 }
 
-
-.card{
-border-radius: 0px;
-
+.mb-4
+{
+    margin-bottom: 0.5rem!important;
+}
+.liste
+{
+    margin-bottom: 1.5rem!important;
 }
 body{
 background-image: url("background.png");
@@ -108,12 +112,6 @@ position: absolute;
 .my-4.baslik{
 color:red;
 }
-
-
-
-
-
-
 .card .card-heading {
     padding: 0 20px;
     margin: 0;
@@ -277,6 +275,7 @@ color:red;
 }
 
 .card.hovercard {
+    top: 20px;
     position: relative;
     padding-top: 0;
     overflow: hidden;
@@ -338,3 +337,12 @@ img {
 img:active {
     -webkit-transform: scale(2);
 }
+
+.card.hovercard #sa {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: white;
+    opacity: 0.5;
+}
+

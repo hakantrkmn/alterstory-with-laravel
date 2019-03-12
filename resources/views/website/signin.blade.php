@@ -2,15 +2,12 @@
 
 @section('content')
     
-
+<div class="container sd">
         <div class="login-form">
         <form id="myform" action="{{ route('signinUser') }}" method="POST" >
                 {{ csrf_field() }}
-               <h2 class="text-center"> Kayıt Ol</h2>
-               <div id="asd"style="display: none;" align="center" class="alert alert-danger">
-         <strong>Kullanıcı mevcut</strong></div>
-         <div id="basari"style="display: none;" align="center" class="alert alert-success">
-       <strong>Kayıt Başarılı</strong></div>
+               <h2 id="signin" class="text-center"> Kayıt Ol</h2>
+
                <div class="form-group">
                    <input id="kadi" name="adi" type="text" class="form-control" placeholder="Kullanıcı Adı" required="required">
                </div>
@@ -31,9 +28,9 @@
                  </div>
                </div>
                <div class="form-group">
-                   <button onclick="sorgu()" id="signin" type="submit" class="btn btn-primary btn-block">Kayıt ol</button>
+                   <button onclick="sorgu()" id="signinButton" type="submit" class="btn btn-primary btn-block">Kayıt ol</button>
                </div>
            </form>
        </div>
-
+    </div>
        @endsection

@@ -20,10 +20,18 @@ class firstalter extends Model
     }
     public function izin()
     {
-        if (session('user.ad')!=$this->user->ad) {
-            if (count($this->secondalters)<3) {
+        if (session('user.ad')!=$this->user->ad and $this->parentStory->kullanici_id != session('user.id'))
+        {
+            if (count($this->secondalters)<3)
+            {
+                foreach ($this->secondalters as $story) {
+                    if ($story->kullanici_id== session('user.id') ) {
+                        return 0;
+                    }
+                }
                 return 1;
             }
+            
         }
         return 0;
         

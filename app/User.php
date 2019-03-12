@@ -1,8 +1,8 @@
 <?php
 
 namespace App;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
-
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -15,6 +15,7 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\rootstory','kullanici_id','id');
     }
+    
     public function firstalters()
     {
         return $this->hasMany('App\firstalter','kullanici_id','id');
@@ -55,10 +56,16 @@ class User extends Authenticatable
                 
                 }
                 else{
-                   
                    return 0;
       
                }
              }
+             public function banuser(){
+                $sa = session('user');
+                $sa->ban=1;
+                session()->put('user',$sa);
+        
+        
+           }
 
 }

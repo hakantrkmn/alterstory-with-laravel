@@ -14,7 +14,9 @@
             <div class="card-body">
               <h2 align="center"class="card-title"> {{ $rootstory->baslik }} </h2>
               <p class="card-text"><?php echo $rootstory->metin ?><br> <a href="{{route('profil', $rootstory->user->ad)}}">{{ $rootstory->user->ad }}</a>({{ $rootstory->created_at->diffForHumans() }})</p>
-              @if (session()->has('user') and $rootstory->izin()==1)   
+
+              @if (session()->has('user') and $rootstory->izin()==1)  
+
               <form class="" action="{{ route('addalter', $rootstory->id)}}" method="post">
                     {{ csrf_field() }}
                     <input type="hidden" name="seviye" value=" {{ $rootstory->seviye}} ">

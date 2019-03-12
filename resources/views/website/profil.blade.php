@@ -1,26 +1,26 @@
 @extends('layout')
 @section('content')
 
-<div class="container deneme">
+<div class="container deneme sd">
 <div class="row align-items-start">
     <div class="col-lg-3 col-sm-6">
 
         <div class="card hovercard">
             <div class="cardheader">
-
+                @if (session('user.ad')==$user->ad)
+                <a  id="sa" href="{{ route('edituser',$user)}}"><i class="fas fa-cog"></i></a>
+                @endif
             </div>
             <div class="avatar">
-                <img alt="" src="https://scontent.fbtz1-3.fna.fbcdn.net/v/t1.0-9/14102416_10209123261632885_5785918647281898408_n.jpg?_nc_cat=109&_nc_ht=scontent.fbtz1-3.fna&oh=24cd59aaaf05f7bf3e4ef2bd4ad63485&oe=5CE18AE6">
+            <img alt="" src="/images/{{$user->img}}">
             </div>
             <div class="info">
                 <div class="title">
-                <a target="_blank" href="https://scripteden.com/">{{$user->ad}}</a>
+                <p>{{$user->ad}}</p>
                 </div>
-                <div class="desc">Passionate designer</div>
-                <div class="desc">Curious developer</div>
-                <div class="desc">Tech geek</div>
+              <div class="desc">{{$user->bio}}</div>
             </div>
-            
+
         </div>
 
     </div>
@@ -33,7 +33,7 @@
       <div class="card-body">
         <h2 align="center" class="card-title"><?php echo $value->baslik ?></h2>
         <p class="card-text"><?php echo $value->metin ?></p>
-        <a href="?op=alterstories&id=<?php echo $value->id ?>&seviye=<?php echo $value->seviye ?>" class="btn btn-primary">Hikayeye Git &rarr;</a>
+        <a href="{{route('storydetay',$value)}}" class="btn btn-primary">Hikayeye Git &rarr;</a>
           @if (session('user.ad')==$user->ad)
         <form id="mform" style="display:inline-block;"class="" action="{{route('deletestory')}}" method="post">
             {{ csrf_field() }}
@@ -50,7 +50,7 @@
   <div class="card mb-4">
     <div class="card-body">
       <p class="card-text"><?php echo $value->metin ?></p>
-        <a href="?op=alterstories&id=<?php echo $value->id ?>&seviye=<?php echo $value->seviye ?>" class="btn btn-primary">Hikayeye Git &rarr;</a>
+        <a href="{{route('alterdetay',$value)}}" class="btn btn-primary">Hikayeye Git &rarr;</a>
         @if (session('user.ad')==$user->ad)
 
         <form id="mform" style="display:inline-block;"class="" action="{{route('deletestory')}}" method="post">

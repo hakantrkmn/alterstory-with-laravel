@@ -21,8 +21,13 @@ class rootstory extends Model
     }
     public function izin()
     {
-        if (session('user.ad')!=$this->user->ad) {
+        if (session('user.ad')!=$this->user->ad ) {
             if(count($this->firstalters)<3) {
+                foreach ($this->firstalters as $story) {
+                    if ($story->kullanici_id== session('user.id') ) {
+                        return 0;
+                    }
+                }
                 return 1;
             }
         }
