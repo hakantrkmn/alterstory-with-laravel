@@ -10,6 +10,7 @@
     <meta name="author" content="Hakan Türkmen">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>AlterStory</title>
+    <link rel="shortcut icon" href="{{{ asset('website/favicon.png') }}}">
     <link rel="shortcut icon" href="css/favicon.ico">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
@@ -32,7 +33,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
       <div class="container">
-        <a class="navbar-brand" href="/1">alterstory</a>
+        <a class="navbar-brand" href="/rootstories/1">alterstory</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>

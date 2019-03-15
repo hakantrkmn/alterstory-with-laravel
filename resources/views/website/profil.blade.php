@@ -37,6 +37,7 @@
           @if (session('user.ad')==$user->ad)
         <form id="mform" style="display:inline-block;"class="" action="{{route('deletestory')}}" method="post">
             {{ csrf_field() }}
+            <input type="hidden" name="_method" value="delete">
             <button onclick="emin()" type="button"class="btn btn-danger">Hikayeyi Sil!</button>
             <input type="hidden" name="id" value="<?php echo $value->id ?>">
             <input type="hidden" name="seviye" value="<?php echo $value->seviye ?>">
@@ -55,6 +56,7 @@
 
         <form id="mform" style="display:inline-block;"class="" action="{{route('deletestory')}}" method="post">
           {{ csrf_field() }}
+          <input type="hidden" name="_method" value="delete">
           <button onclick="emin()" type="button"class="btn btn-danger">Hikayeyi Sil!</button>
           <input type="hidden" name="id" value="<?php echo $value->id ?>">
           <input type="hidden" name="seviye" value="<?php echo $value->seviye ?>">
@@ -68,11 +70,12 @@
   <div class="card mb-4">
   <div class="card-body">
   <p class="card-text"><?php echo $value->metin ?></p>
-  <a href="readstory/<?php echo $value->id ?>/<?php echo $value->seviye ?>/<?php echo $value->parentid ?>" class="btn btn-primary">Hikayeyi Oku&rarr;</a>
+  <a href="{{route('allstory',$value)}}" class="btn btn-primary">Hikayeyi Oku&rarr;</a>
   @if (session('user.ad')==$user->ad)
 
   <form id="mform" style="display:inline-block;"class="" action="{{route('deletestory')}}" method="post">
     {{ csrf_field() }}
+    <input type="hidden" name="_method" value="delete">
     <button onclick="emin()" type="button"class="btn btn-danger">Hikayeyi Sil!</button>
     <input type="hidden" name="id" value="<?php echo $value->id ?>">
     <input type="hidden" name="seviye" value="<?php echo $value->seviye ?>">

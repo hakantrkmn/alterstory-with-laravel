@@ -10,7 +10,7 @@
 
         <div class="form-group ">
           <label id="nickLabel" for="ad">Kullanıcı Adı</label>
-          <input type="text" name="ad" class="form-control" id="ad" value="{{$user->ad}}" aria-describedby="emailHelp" >
+          <input type="text"  name="ad" class="form-control" id="ad" value="{{$user->ad}}" aria-describedby="emailHelp" required>
           
         </div>
         <div class="form-group ">

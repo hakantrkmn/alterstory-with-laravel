@@ -30,7 +30,14 @@
                         <textarea  name="metin" onkeyup="charcountupdate(this.value)" id="textbox"> </textarea>
                         <div class="buton">
                           <strong><span id="charcount"></span> karakter</strong>
-                          <button onclick="karakter()" id="buton" type="submit" class="btn btn-dark ">Sonlandır</button>
+                          <button onclick="karakter()" id="buton" type="submit" class="btn btn-dark ">
+                            @if ($request->seviye==0)
+                                Devam Ettir
+                            @else
+                            Sonlandır
+                            @endif
+                            
+                          </button>
                         </div>
                       </form>
             </div>
