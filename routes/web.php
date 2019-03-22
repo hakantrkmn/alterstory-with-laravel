@@ -35,13 +35,8 @@ Route::delete('', 'storyController@delete')->name('deletestory'); //hikaye silme
 
 Route::get('secondalters/{firstalter}', 'storyController@alterdetail')->name('alterdetay'); //firstalter detay arayüzü
 Route::get('allstory/{story}', 'storyController@allstory')->name('allstory'); //tüm hikaye okuma arayüzü
-<<<<<<< HEAD
 Route::get('rootstories/{page}', 'storyController@liste')->name('stories')->where('page', '[0-9]+');
 Route::get('', 'HomeController@welcome')->name('welcome');
-=======
-Route::get('', 'storyController@liste')->name('stories');
-Route::get('rootstories/{page}', 'storyController@liste')->name('stories')->where('page', '[0-9]+');
->>>>>>> 13f396e903a5d51f5e134bb1645dff085b7b6633
 
 
 

@@ -9,11 +9,7 @@
     <meta name="description" content="Create Alternative Stories">
     <meta name="author" content="Hakan Türkmen">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-<<<<<<< HEAD
     <title>alterstory</title>
-=======
-    <title>AlterStory</title>
->>>>>>> 13f396e903a5d51f5e134bb1645dff085b7b6633
     <link rel="shortcut icon" href="{{{ asset('website/favicon.png') }}}">
     <link rel="shortcut icon" href="css/favicon.ico">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
