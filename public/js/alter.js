@@ -20,13 +20,14 @@ $(window).bind("load", function() {
 		}
 	 });
 
- },1000)
+ },5000)
 
 	
 
 	$('#dogrulama').keyup(function(){
 		if($('#ksifre').val()!=$('#dogrulama').val())
 		{
+			console.log("asf")
 			$('#signinButton').attr("disabled", true);
 			$('#warn').fadeIn();
 		}
@@ -203,7 +204,7 @@ function sorgu2(){
 				success:function(giris){
 					if (giris["durum"] == "1")
 					{
-						window.location = '/'
+						window.location = '/rootstories/1'
 					}
 					else{
 						$('#login').after('<div id="asd" align="center" class="alert alert-danger"><strong>Bilgiler yanlış</strong></div>');    

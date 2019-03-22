@@ -14,7 +14,7 @@
                </div>
                <div class="form-group">
                    <button onclick="sorgu2()" id="giris" type="submit" class="btn btn-primary btn-block">Giriş Yap</button>
-                   <a  id="giris" href="{{route('signin')}}" class="btn btn-primary btn-block">Kayıt Ol</a>
+                   <a  id="giris" href="{{route('welcome')}}" class="btn btn-primary btn-block">Kayıt Ol</a>
                </div>
            </form>
        </div>

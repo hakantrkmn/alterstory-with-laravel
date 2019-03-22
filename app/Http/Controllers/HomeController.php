@@ -21,4 +21,9 @@ class HomeController extends Controller
         
         return view('website/signin');
     }
+    public function welcome()
+    {
+        
+        return view('website/welcome');
+    }
 }

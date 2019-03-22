@@ -24,7 +24,7 @@ class userController extends Controller
         $mailer->sendMail($user);
         $user->save();
         session()->put('user', $user); 
-        return redirect('/1');
+        return redirect('/rootstories/1');
 
  
      }
@@ -32,13 +32,17 @@ class userController extends Controller
      public function userdetail($name){
 
         $user = User::where('ad', '=', $name)->first();
+        if(!$user)
+        {
+           abort(404);
+        }
         return view('website/profil', compact('user'));
 
  
      }
      public function logoutuser(){
       Session::forget('user');
-      return redirect('/1');
+      return redirect('/rootstories/1');
    }
 
      public function edituser(User $user){
@@ -47,17 +51,23 @@ class userController extends Controller
 
    }
    public function useredit(Request $request, User $user){
-      $image = $request->file('image');
-      $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
-      $path = public_path('/images');
-      $image->move($path,$input['imagename']);
-      File::delete('images/' . $user->img);
+      if($request->file('image'))
+      {
+         $image = $request->file('image');
+         $input['imagename'] = time() . '.' . $image->getClientOriginalExtension();
+         $path = public_path('/images');
+         $image->move($path,$input['imagename']);
+         File::delete('images/' . $user->img);
+         $user->img=$input['imagename'];
+      }
+      if ($request->ad=="") {
+         $request->ad=$user->ad;
+      }
       $user->ad=$request->ad;
       $user->bio=$request->bio;
-      $user->img=$input['imagename'];
       $user->save();
       Session::forget('user');
-      return redirect('/1');
+      return redirect('/rootstories/1');
       
 
 

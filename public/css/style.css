@@ -1,3 +1,16 @@
+
+.login-main{
+	margin-top: 130px;
+}
+.multibox{
+	padding-left: 0px;
+	padding-bottom: 10px;
+}
+.login-main span{
+	font-size: 12px;
+} 
+
+
 body { padding-top: 50px; }
 .login-form {
     width: 340px;
@@ -284,7 +297,7 @@ color:red;
 }
 
 .card.hovercard .cardheader {
-    background: url("http://lorempixel.com/850/280/natre/4/");
+    background: url("https://pbs.twimg.com/profile_banners/50988711/1384539792/600x200");
     background-size: cover;
     height: 135px;
 }

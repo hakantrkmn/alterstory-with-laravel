@@ -21,22 +21,22 @@ Route::post('apilogin', 'myAPI@apilogin')->name('apilogin'); //kullanıcı çık
 
 Route::post('loginuser', 'userController@loginUser')->name('loginUser');  //kullanıyı login etme
 Route::get('logoutuser', 'userController@logoutuser')->name('logoutuser'); //kullanıcı çıkış yapma
-Route::get('edituser/{user}', 'userController@edituser')->name('edituser'); //kullanıcı edit 
+Route::get('edituser/{user}', 'userController@edituser')->name('edituser')->middleware("checkEditUser"); //kullanıcı edit 
 Route::post('/edituser/{user}', 'userController@useredit')->name('useredit'); //kullanıcı çıkış yapma
 Route::get('profil/{name}', 'userController@userdetail')->name('profil');
 Route::post('/user/signinUser', 'userController@signinUser')->name('signinUser'); //kullanıcı kayıt etme
 
 
 Route::post('savealter', 'storyController@savealter')->name('savealter'); //alternatif kayıt etme
-Route::post('addRootStory', 'storyController@addRootStory')->name('addRootStory'); //anahikaye kayıt etme
+Route::post('addRootStory', 'storyController@addRootStory')->name('addRootStory')->middleware("checkRootStory"); //anahikaye kayıt etme
 Route::get('firstalters/{rootstory}', 'storyController@rootdetail')->name('storydetay');
 Route::post('addalter/{id}', 'storyController@addalter')->name('addalter')->middleware("checkuser"); //alternatif ekleme arayüzü
-Route::post('', 'storyController@delete')->name('deletestory'); //hikaye silme
+Route::delete('', 'storyController@delete')->name('deletestory'); //hikaye silme
 
 Route::get('secondalters/{firstalter}', 'storyController@alterdetail')->name('alterdetay'); //firstalter detay arayüzü
 Route::get('allstory/{story}', 'storyController@allstory')->name('allstory'); //tüm hikaye okuma arayüzü
-Route::get('', 'storyController@liste')->name('stories');
-Route::get('{page}', 'storyController@liste')->name('stories')->where('page', '[0-9]+');
+Route::get('rootstories/{page}', 'storyController@liste')->name('stories')->where('page', '[0-9]+');
+Route::get('', 'HomeController@welcome')->name('welcome');
 
 
 
